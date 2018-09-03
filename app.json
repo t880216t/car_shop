@@ -1,0 +1,36 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/sale/sales",
+    "pages/detail/detail",
+    "pages/report/report",
+    "pages/fenqi/fenqi",
+    "pages/submit/submit"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "backgroundColor": "#ffffff",
+    "color": "#c0c0c0",
+    "selectedColor": "#008040",
+    "list": [
+      {
+        "selectedIconPath": "images/tabbar/mn01.png",
+        "text": "首页",
+        "pagePath": "pages/index/index",
+        "iconPath": "images/tabbar/mn1.png"
+      },
+      {
+        "selectedIconPath": "images/tabbar/mn02.png",
+        "text": "买车",
+        "pagePath": "pages/sale/sales",
+        "iconPath": "images/tabbar/mn2.png"
+      }
+    ]
+  }
+}

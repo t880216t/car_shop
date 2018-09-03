@@ -1,0 +1,225 @@
+/* pages/detail/detail.wxss */
+
+.detail-container {
+  background-color: #f2f2f2;
+  min-height: 100%;
+  width: 100%;
+}
+
+.swiper-container {
+  width: 100%;
+  position: relative;
+}
+.saled-container{
+  position: fixed;
+  top:20px;
+  left: 20px;
+  height: 150px;
+  width:150px;
+}
+
+.swiper_box {
+  width: 100%;
+  height: 466rpx;
+}
+
+swiper-item image {
+  width: 100%;
+  display: inline-block;
+  overflow: hidden;
+  height: 466rpx;
+}
+
+.swiper-container .dots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 20rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.swiper-container .dots .dot {
+  margin: 0 8rpx;
+  width: 14rpx;
+  height: 14rpx;
+  background: #000;
+  border-radius: 50%;
+  transition: all 0.6s;
+  opacity: 0.3;
+}
+
+.swiper-container .dots .dot.active {
+  opacity: 0.6;
+}
+
+.car_detail {
+  background-color: #fff;
+  display: flex;
+  padding-top: 16px;
+  padding-left: 20px;
+  padding-right: 20px;
+  flex-direction: column;
+}
+
+.car_detail_head {
+  line-height: 27px;
+  font-size: 20px;
+  color: #1b1b1b;
+  padding-bottom: 20px;
+  font-weight: 500;
+  font-family: "Hiragino Sans GB",
+                 "Microsoft Yahei UI",
+                 "Microsoft Yahei",
+                 微软雅黑,
+                 "Segoe UI",
+                 Tahoma,
+                 宋体b8b体,
+                 SimSun,
+                 sans-serif;
+}
+
+.car_price_box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.new_car_price {
+  color: #abafb3;
+  font-size: 12px;
+  height: 13px;
+  text-decoration: line-through;
+  flex: 1;
+}
+
+.wan {
+  color: #f85d00;
+  font-size: 14px;
+  line-height: 14px;
+}
+
+.car_price {
+  color: #f85d00;
+  font-size: 30px;
+  flex: 1;
+}
+
+.precent_box {
+  display: flex;
+  flex-direction: row;
+  background-color: #eafae7;
+  height: 50px;
+  color: #38b44c;
+  width: 100%;
+}
+
+.precent_info {
+  flex: 6;
+  margin-top: 10px;
+}
+
+.precent_text {
+  border-width: 1px;
+  border-color: #000;
+  color: #38b44c;
+  font-size: 18px;
+  margin-left: 30px;
+}
+
+.precent_detail {
+  flex: 1;
+  margin-top: 15px;
+}
+
+.car_info_box {
+  width: 100%;
+  background-color: #fff;
+}
+
+.car_info_title {
+  display: flex;
+  flex-direction: row;
+}
+
+.title_label {
+  background: #ff5a37;
+  width: 2px;
+}
+
+.title_info {
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+  padding: 20px;
+}
+
+.car_info {
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #f3f3f3;
+}
+
+.car_info_item_box {
+  flex: 1;
+  text-align: center;
+}
+.car_info_item_content{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.car_info_link {
+  width: 100%;
+  display: flex;
+  text-align: right;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.car_image_container {
+  width: 100%;
+  background-color: #fff;
+  margin-top: 20px;
+  margin-bottom: 60px;
+}
+
+.car_image_box {
+  margin: 5px 5px 5px 5px;
+}
+
+.car_image {
+  width: 100%;
+}
+
+.footer-box {
+  width: 100%;
+  background-color: #fff;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+}
+
+.footer-box .footer-button {
+  flex: 1;
+}
+
+.footer-box .contact-btn {
+  border-radius: 0rpx;
+  text-align: center;
+  height: 100%;
+  line-height: 100rpx;
+  background-color: #008000;
+  color: #fff;
+  font-size: 35rpx;
+}
+.footer-box .share-btn{
+  border-radius: 0rpx;
+  text-align: center;
+  height: 100%;
+  line-height: 100rpx;
+  background-color: #fff;
+  color:#000;
+  font-size: 35rpx;
+}

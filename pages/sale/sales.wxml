@@ -1,0 +1,92 @@
+<!--pages/sale/sales.wxml-->
+<view class="container">
+  <view class='search-container'>
+    <view class="search-view" style="background:{{ scrollTop === 0 ?'-webkit-linear-gradient(top, rgba(105,195,170, 1), rgba(105,195,170, 0.3))' :( scrollTop<200 ? 'rgba(105,195,170,'+(scrollTop/400+0.3) +')' : 'rgba(105,195,170,1)')  }} ">
+      <view class="serarch-content">
+        <image src="/images/search-pic.png" class="search-icon" />
+        <input placeholder="请输入搜索内容" class="search-input" maxlength="30" confirm-type="搜索" bindinput='listenerSearchInput' bindconfirm='toSearch'>
+        </input>
+        <button class='search-btn' bindtap="toSearch">搜索
+        </button>
+      </view>
+    </view>
+  </view>
+  <view class='filter-container'>
+    <view class='filter-box'>
+      <view class='filter-item-box' bindtap='changeMenu' id='car'>
+        <view class='filter-item-text-box'>
+          <text>{{carType?carType:'全部车型'}}</text>
+        </view>
+        <view class='filter-item-icon-box'>
+          <image src='../../images/down.png' style='height:15px;width:15px;'></image>
+        </view>
+      </view>
+
+      <view class='filter-item-box' bindtap='changeMenu' id='sale'>
+        <view class='filter-item-text-box'>
+          <text>{{saleFilter?saleFilter:'售价区间'}}</text>
+        </view>
+        <view class='filter-item-icon-box'>
+          <image src='../../images/down.png' style='height:15px;width:15px;'></image>
+        </view>
+      </view>
+
+      <view class='filter-item-box' bindtap='changeMenu' id='paixu'>
+        <view class='filter-item-text-box'>
+          <text>{{paixu?paixu:'排序'}}</text>
+        </view>
+        <view class='filter-item-icon-box'>
+          <image src='../../images/down.png' style='height:15px;width:15px;'></image>
+        </view>
+        <view class='icon'></view>
+      </view>
+    </view>
+
+  </view>
+  <view class="temp temp1 hide{{isSale ? 'show':''}}">
+    <view wx:for="{{saleC}}">
+      <view id="{{item}}" bindtap='saleSelect'>
+        {{item}}
+      </view>
+    </view>
+  </view>
+  <view class="temp temp1 hide{{isCar ? 'show':''}}">
+    <view wx:for="{{carC}}">
+      <view id="{{item}}" bindtap='carSelect'>
+        {{item}}
+      </view>
+    </view>
+  </view>
+  <view class="temp temp1 hide{{isPaixu ? 'show':''}}">
+    <view wx:for="{{paiC}}">
+      <view id="{{item}}" bindtap='paixuSelect'>
+        {{item}}
+      </view>
+    </view>
+  </view>
+  <view class='search-list-container'>
+    <scroll-view scroll-y="true" style="height: 80%;width:100%" wx:for="{{cars}}">
+      <view style='border-top: 1px solid #d1d3d4;' bindtap='goToDetail' id="{{item.id}}">
+        <view class='search-item-container'>
+          <view class='search-item-image' style='flex:3;'>
+            <image src='{{item.imageURL}}' style=" width: 150px;height:95px"></image>
+          </view>
+          <view class='search-item-info-box' style='flex:4;'>
+            <view style="margin-left:10px;width: 100%;height:100%;display:flex;flex-direction:column">
+              <view class='search-item-title'>{{item.title}}</view>
+              <view class='search-item-info'>
+                {{item.carTime}}
+                <span>|</span>
+                {{item.gongLi}}万公里
+              </view>
+              <view class='search-item-price'>
+                <view class='price'>{{item.price}}万</view>
+                <view class='payment'>首付{{item.firstPay}}万</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

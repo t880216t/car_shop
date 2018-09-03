@@ -1,0 +1,129 @@
+<!--pages/detail/detail.wxml-->
+<view class='detail-container'>
+  <view class="swiper-container" wx:if="{{!detail.video.video_url}}">
+    <swiper class="swiper_box" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{detail.imageURLs}}" wx:key="{{index}}">
+        <swiper-item>
+          <image src="{{item}}" class="slide-image" width="355" height="150" mode="aspectFit" lazy-load="true" />
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="dots">
+      <block wx:for="{{detail.imageURLs}}" wx:key="unique">
+        <view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>
+      </block>
+    </view>
+    <view wx:if="{{detail.isSaled}}" class='saled-container'>
+      <image src='../../images/detail/saled.png' style='height:100%;width:100%'></image>
+    </view>
+  </view>
+  <view class="swiper-container" wx:if="{{detail.video.video_url}}">
+    <video src="{{detail.video.video_url}}" style='width:100%'></video>
+  </view>
+  <view class='car_detail'>
+    <view class='car_detail_head'>{{detail.title}}</view>
+    <view class='car_price_box'>
+      <view class='car_price'>
+        {{detail.price}}
+        <i class='wan'>万</i>
+      </view>
+      <view class='new_car_price'>新车含税{{detail.oldPrice}}万</view>
+    </view>
+  </view>
+  <view class='precent_box' bindtap='goFenqi'>
+    <view class='precent_info'>
+      <text class='precent_text'>首付{{detail.firstPay}}万元 月供{{detail.mPay}}元</text>
+    </view>
+    <view class='precent_detail'>
+      <text style="font-size:14px">详情></text>
+    </view>
+  </view>
+  <view class='car_info_box'>
+    <view class='car_info_title'>
+      <view class='title_label'></view>
+      <view class='title_info'>车辆信息</view>
+    </view>
+    <view class='car_info'>
+      <view class='car_info_item_box'>
+        <view class='car_info_item'>
+          <view class='car_info_item_title'>
+            <text id="text5" style="color:#abafb3;font-size:14px">行驶里程</text>
+          </view>
+          <view class='car_info_item_content'>
+            <text style="color:#757f89;font-size:16px;font-weight: bold">{{detail.gongLi}} 万公里</text>
+          </view>
+        </view>
+        <view class='car_info_item'>
+          <view class='car_info_item_title'>
+            <text id="text11" style="color:#abafb3;font-size:14px">排量</text>
+          </view>
+          <view class='car_info_item_content'>
+            <text style="color:#757f89;font-size:16px;font-weight: bold">{{detail.pailiang}}</text>
+          </view>
+        </view>
+      </view>
+      <view class='car_info_item_box'>
+        <view class='car_info_item'>
+          <view class='car_info_item_title'>
+            <text id="text5" style="color:#abafb3;font-size:14px">上牌时间</text>
+          </view>
+          <view class='car_info_item_content'>
+            <text style="color:#757f89;font-size:16px;font-weight: bold">{{detail.carTime}}</text>
+          </view>
+        </view>
+        <view class='car_info_item'>
+          <view class='car_info_item_title'>
+            <text id="text11" style="color:#abafb3;font-size:14px">变速箱</text>
+          </view>
+          <view class='car_info_item_content'>
+            <text style="color:#757f89;font-size:16px;font-weight: bold">{{detail.dang}}</text>
+          </view>
+        </view>
+      </view>
+      <view class='car_info_item_box'>
+        <view class='car_info_item'>
+          <view class='car_info_item_title'>
+            <text id="text5" style="color:#abafb3;font-size:14px">上牌地</text>
+          </view>
+          <view class='car_info_item_content'>
+            <text style="color:#757f89;font-size:16px;font-weight: bold">{{detail.city}}</text>
+          </view>
+        </view>
+        <view class='car_info_item'>
+          <view class='car_info_item_title'>
+            <text id="text11" style="color:#abafb3;font-size:14px">排放标准</text>
+          </view>
+          <view class='car_info_item_content'>
+            <text style="color:#757f89;font-size:16px;font-weight: bold">{{detail.carOut}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='car_info_link'>
+      <view style='flex:2'></view>
+      <label style="flex:1;color:#4ea2ff;font-size:16px;font-weight: bold;margin-right:10px" bindtap="dispatchBind">检测报告 >></label>
+    </view>
+  </view>
+  <view class='car_image_container'>
+    <view style='height:10px;width:100%;'></view>
+    <view class='car_image_box' wx:for="{{detail.imageURLs}}" wx:key="{{index}}">
+      <image class='car_image' src="{{item}}" data-index='{{index}}' bindtap='previewImg'></image>
+    </view>
+  </view>
+  <view class="footer-box" wx:if="{{!isAdmin}}">
+    <view class='footer-button'>
+      <button open-type="share" class='share-btn'>分享给好友</button>
+    </view>
+    <view class='footer-button'>
+      <button open-type='contact' class="contact-btn">联系客服</button>
+    </view>
+  </view>
+  <view class="footer-box" wx:if="{{isAdmin}}">
+    <view class='footer-button'>
+      <button bindtap='handleDelete' class='share-btn'>删除</button>
+    </view>
+    <view class='footer-button'>
+      <button bindtap='handleUnable' class="contact-btn">下架</button>
+    </view>
+  </view>
+</view>

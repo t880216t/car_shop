@@ -1,0 +1,329 @@
+<!--pages/submit/submit.wxml-->
+<view class='submit-container'>
+  <view class='car-info-container'>
+    <view class='car-info-label'>基本信息</view>
+    <!-- 名称 -->
+    <view class='line' style="height:1px;"></view>
+    <view class='car-info-container'>
+      <view class='car-item-box' style='margin-top:10px;margin-bottom:10px'>
+        <label class='car-label'>标　　题</label>
+        <view class='car-info-box'>
+          <input class="car-info-input" placeholder="请输入标题" value='{{carinfo.title}}' id='titleInput' bindinput="inputChange" />
+        </view>
+      </view>
+
+      <view class='car-item-box' style='margin-top:10px;margin-bottom:10px'>
+        <label class='car-label'>售　　价</label>
+        <view class='car-info-box'>
+          <input class="car-info-input" placeholder="请输入售价" id='priceInput' bindinput="inputChange" />
+        </view>
+      </view>
+
+      <view class='car-item-box' style='margin-top:10px;margin-bottom:10px'>
+        <label class='car-label'>新车含税</label>
+        <view class='car-info-box'>
+          <input class="car-info-input" placeholder="请输入新车含税价" id="oldPriceInput" bindinput="inputChange" />
+        </view>
+      </view>
+
+      <view class='car-item-box' style='margin-top:10px;margin-bottom:10px'>
+        <label class='car-label'>行驶里程</label>
+        <view class='car-info-box'>
+          <input class="car-info-input" placeholder="请输入行驶里程" id="gongLiInput" bindinput="inputChange" />
+        </view>
+      </view>
+
+      <view class='car-item-box' style='margin-top:10px;margin-bottom:10px'>
+        <label class='car-label'>车牌地</label>
+        <view class='car-info-box'>
+          <input class="car-info-input" placeholder="请输入车牌所在地" id="cityInput" bindinput="inputChange" />
+        </view>
+      </view>
+
+      <view class='car-item-box' style='margin-top:10px;margin-bottom:10px'>
+        <label class='car-label'>排　　量</label>
+        <view class='car-info-box'>
+          <input class="car-info-input" placeholder="请输入排量" id="pailiangInput" bindinput="inputChange" />
+        </view>
+      </view>
+
+      <view class='car-item-box' style='margin-top:10px;margin-bottom:10px'>
+        <label class='car-label'>排放标准</label>
+        <view class='car-info-box'>
+          <input class="car-info-input" placeholder="请输入等级" id="carOutInput" bindinput="inputChange" />
+        </view>
+      </view>
+
+      <view class='car-item-box' style='margin-top:10px;margin-bottom:10px;'>
+        <label class='car-label'>上牌时间</label>
+        <view class='car-info-box'>
+          <picker mode="date" value="{{carTime}}" fields='month' start="20\00-10-01" end="2099-10-08" bindchange="carTimeChange">
+            <view class="car-info-input">
+              {{carTime}}
+            </view>
+          </picker>
+        </view>
+      </view>
+
+      <view class='car-item-box' style='margin-top:10px;margin-bottom:10px'>
+        <label class='car-label'>变速箱</label>
+        <view class='car-info-box'>
+          <picker bindchange="changeDang" value="{{dangIndex}}" range="{{dangList}}">
+            <view class="car-info-input">{{dangList[dangIndex]}}</view>
+          </picker>
+        </view>
+      </view>
+
+      <view class='car-item-box' style='margin-top:10px;margin-bottom:10px'>
+        <label class='car-label'>车　　型</label>
+        <view class='car-info-box'>
+          <picker bindchange="changecarType" value="{{carTypeIndex}}" range="{{carTypeList}}">
+            <view class="car-info-input">{{carTypeList[carTypeIndex]}}</view>
+          </picker>
+        </view>
+      </view>
+
+      <view class='car-item-box' style='margin-top:10px;margin-bottom:10px'>
+        <label class='car-label'>描　　述</label>
+        <view style='flex:4'>
+          <textarea class="car-info-input" style='width:100%;margin-left:5px' bindblur="bindTextAreaBlur" auto-height placeholder="请输入车辆描述" id='descInput' bindinput="inputChange" />
+        </view>
+      </view>
+
+    </view>
+  </view>
+  <view class='car-fenqi-container'>
+    <view class='car-info-label'>金融方案</view>
+    <!-- 名称 -->
+    <view class='line' style="height:1px;"></view>
+    <view class='car-info-container'>
+
+      <view class='car-item-box' style='margin-top:10px;margin-bottom:10px'>
+        <label class='car-label' style='flex:4'>是否提供分期</label>
+        <view class='car-info-box'>
+          <switch class="tui-fr" type="checkbox" checked="{{carinfo.isPay}}" bindchange="changeFenqi" />
+        </view>
+      </view>
+      <view class='{{isChecked?" ":"hide"}}'>
+        <view class='car-item-box' style='margin-top:10px;margin-bottom:10px'>
+          <label class='car-label'>首付金额</label>
+          <view class='car-info-box'>
+            <input class="car-info-input" placeholder="请输入首付金额" id="firstPayInput" bindinput="inputChange" />
+          </view>
+        </view>
+        <view class='car-item-box' style='margin-top:10px;margin-bottom:10px'>
+          <label class='car-label'>分期数</label>
+          <view class='car-info-box'>
+            <input class="car-info-input" placeholder="请输入分期数" id="payTimeInput" bindinput="inputChange" />
+          </view>
+        </view>
+
+        <view class='car-item-box' style='margin-top:10px;margin-bottom:10px'>
+          <label class='car-label'>月　　供</label>
+          <view class='car-info-box'>
+            <input class="car-info-input" placeholder="请输入每月还款金额" id="mPayInput" bindinput="inputChange"/>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='car-photo-container'>
+    <view class='car-info-label'>实车照片</view>
+    <!-- 名称 -->
+    <view class='line' style="height:1px;"></view>
+    <view class='car-info-container'>
+      <view class='car-photo-box' style='margin-top:10px;margin-bottom:10px'>
+        <scroll-view class="scroll-view_H" scroll-x style="width: 90%">
+          <view wx:for="{{images}}" class="scroll-view-item_H">
+            <image src='{{item}}' style='height:80px;width:120px' data-index='{{index}}' bindtap='previewImg'></image>
+          </view>
+          <view class="scroll-view-item_H">
+            <image src='../../images/photo.png' style='height:80px;width:120px' bindtap='uploadPhoto'></image>
+          </view>
+        </scroll-view>
+
+      </view>
+    </view>
+  </view>
+  <view class='car-report-container'>
+    <view class='car-info-label'>检测报告</view>
+    <!-- 名称 -->
+    <view class='line' style="height:1px;"></view>
+    <view class='car-info-container'>
+      <view class='report-detail'>
+        <view class='report-item-box'>
+          <view class='report-item-label'>重大事故排查</view>
+          <view class='report-item-des'>车体骨架结构无变形、无扭曲、无更换、无烧焊、无褶皱；无火烧痕迹，无水泡痕迹。</view>
+          <view style='height:10px;width:100%;'></view>
+
+          <!--事故排查-->
+          <view class='report-item' bindtap='showForm' id='1'>
+            <view class='report-item-title'>排除重大事故</view>
+            <view class='report-item-target-box'>
+              <view class='report-item-target' wx:if="{{reports.content[0].reportTarget === '全部正常'}}">全部正常</view>
+            </view>
+            <view class='report-item-check'>
+              <span class="{{isShowFrom1 ? 'tui-shangjiantou' : 'tui-xiajiantou'}}"></span>
+            </view>
+          </view>
+          <view class="{{isShowFrom1 ? ' ' : 'tui-hide '}}">
+            <view class='report-child-box' wx:for="{{reports.content[0].detailContent}}" wx:key="{{index}}" bindtap="changeSwitch" id="{{index}}">
+              <view class='report-child-title'>{{item.title}}</view>
+              <view class='report-child-status'>
+                <icon type="{{item.status?'success':'warn'}}" size="15"></icon>
+              </view>
+            </view>
+          </view>
+
+          <!--排除火烧车-->
+          <view class='report-item' bindtap='showForm' id='2'>
+            <view class='report-item-title'>排除火烧车</view>
+            <view class='report-item-target-box'>
+              <view class='report-item-target' wx:if="{{reports.content[1].reportTarget === '全部正常'}}">全部正常</view>
+            </view>
+            <view class='report-item-check'>
+              <span class="{{isShowFrom2 ? 'tui-shangjiantou' : 'tui-xiajiantou'}}"></span>
+            </view>
+          </view>
+          <view class="{{isShowFrom2 ? ' ' : 'tui-hide '}}">
+            <view class='report-child-box' wx:for="{{reports.content[1].detailContent}}" wx:key="{{index}}" bindtap="changeSwitch" id="{{index}}">
+              <view class='report-child-title'>{{item.title}}</view>
+              <view class='report-child-status'>
+                <icon type="{{item.status?'success':'warn'}}" size="15"></icon>
+              </view>
+            </view>
+          </view>
+
+          <!--排除水泡车-->
+          <view class='report-item' bindtap='showForm' id='3'>
+            <view class='report-item-title'>排除水泡车</view>
+            <view class='report-item-target-box'>
+              <view class='report-item-target' wx:if="{{reports.content[2].reportTarget === '全部正常'}}">全部正常</view>
+            </view>
+            <view class='report-item-check'>
+              <span class="{{isShowFrom3 ? 'tui-shangjiantou' : 'tui-xiajiantou'}}"></span>
+            </view>
+          </view>
+          <view class="{{isShowFrom3 ? ' ' : 'tui-hide '}}">
+            <view class='report-child-box' wx:for="{{reports.content[2].detailContent}}" wx:key="{{index}}" bindtap="changeSwitch" id="{{index}}">
+              <view class='report-child-title'>{{item.title}}</view>
+              <view class='report-child-status'>
+                <icon type="{{item.status?'success':'warn'}}" size="15"></icon>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view style='height:10px;width:100%;background-color: #f2f2f2'></view>
+
+        <view class='report-item-box'>
+          <view class='report-item-label'>常用功能检测</view>
+          <view class='report-item-des'>检测，电子控制系统、功能开关灯光系统等无异常，可正常使用。</view>
+          <view style='height:10px;width:100%;'></view>
+
+          <!--电子控制系统-->
+          <view class='report-item' bindtap='showForm' id='4'>
+            <view class='report-item-title'>电子控制系统</view>
+            <view class='report-item-target-box'>
+              <view class='report-item-target' wx:if="{{reports.content[3].reportTarget === '全部正常'}}">全部正常</view>
+            </view>
+            <view class='report-item-check'>
+              <span class="{{isShowFrom4 ? 'tui-shangjiantou' : 'tui-xiajiantou'}}"></span>
+            </view>
+          </view>
+          <view class="{{isShowFrom4 ? ' ' : 'tui-hide '}}">
+            <view class='report-child-box' wx:for="{{reports.content[3].detailContent}}" wx:key="{{index}}" bindtap="changeSwitch" id="{{index}}">
+              <view class='report-child-title'>{{item.title}}</view>
+              <view class='report-child-status'>
+                <icon type="{{item.status?'success':'warn'}}" size="15"></icon>
+              </view>
+            </view>
+          </view>
+
+          <!--常用功能开关-->
+          <view class='report-item' bindtap='showForm' id='5'>
+            <view class='report-item-title'>常用功能开关</view>
+            <view class='report-item-target-box'>
+              <view class='report-item-target' wx:if="{{reports.content[4].reportTarget === '全部正常'}}">全部正常</view>
+            </view>
+            <view class='report-item-check'>
+              <span class="{{isShowFrom5 ? 'tui-shangjiantou' : 'tui-xiajiantou'}}"></span>
+            </view>
+          </view>
+          <view class="{{isShowFrom5 ? ' ' : 'tui-hide '}}">
+            <view class='report-child-box' wx:for="{{reports.content[4].detailContent}}" wx:key="{{index}}" bindtap="changeSwitch" id="{{index}}">
+              <view class='report-child-title'>{{item.title}}</view>
+              <view class='report-child-status'>
+                <icon type="{{item.status?'success':'warn'}}" size="15"></icon>
+              </view>
+            </view>
+          </view>
+
+          <!--灯光系统-->
+          <view class='report-item' bindtap='showForm' id='6'>
+            <view class='report-item-title'>灯光系统</view>
+            <view class='report-item-target-box'>
+              <view class='report-item-target' wx:if="{{reports.content[5].reportTarget === '全部正常'}}">全部正常</view>
+            </view>
+            <view class='report-item-check'>
+              <span class="{{isShowFrom6 ? 'tui-shangjiantou' : 'tui-xiajiantou'}}"></span>
+            </view>
+          </view>
+          <view class="{{isShowFrom6 ? ' ' : 'tui-hide '}}">
+            <view class='report-child-box' wx:for="{{reports.content[5].detailContent}}" wx:key="{{index}}" bindtap="changeSwitch" id="{{index}}">
+              <view class='report-child-title'>{{item.title}}</view>
+              <view class='report-child-status'>
+                <icon type="{{item.status?'success':'warn'}}" size="15"></icon>
+              </view>
+            </view>
+          </view>
+
+          <!--玻璃、后视镜-->
+          <view class='report-item' bindtap='showForm' id='7'>
+            <view class='report-item-title'>玻璃、后视镜</view>
+            <view class='report-item-target-box'>
+              <view class='report-item-target' wx:if="{{reports.content[6].reportTarget === '全部正常'}}">全部正常</view>
+            </view>
+            <view class='report-item-check'>
+              <span class="{{isShowFrom7 ? 'tui-shangjiantou' : 'tui-xiajiantou'}}"></span>
+            </view>
+          </view>
+          <view class="{{isShowFrom7 ? ' ' : 'tui-hide '}}">
+            <view class='report-child-box' wx:for="{{reports.content[6].detailContent}}" wx:key="{{index}}" bindtap="changeSwitch" id="{{index}}">
+              <view class='report-child-title'>{{item.title}}</view>
+              <view class='report-child-status'>
+                <icon type="{{item.status?'success':'warn'}}" size="15"></icon>
+              </view>
+            </view>
+          </view>
+
+          <!--随车附件-->
+          <view class='report-item' bindtap='showForm' id='8'>
+            <view class='report-item-title'>随车附件</view>
+            <view class='report-item-target-box'>
+              <view class='report-item-target' wx:if="{{reports.content[7].reportTarget === '全部正常'}}">全部正常</view>
+            </view>
+            <view class='report-item-check'>
+              <span class="{{isShowFrom8 ? 'tui-shangjiantou' : 'tui-xiajiantou'}}"></span>
+            </view>
+          </view>
+          <view class="{{isShowFrom8 ? ' ' : 'tui-hide '}}">
+            <view class='report-child-box' wx:for="{{reports.content[7].detailContent}}" wx:key="{{index}}" bindtap="changeSwitch" id="{{index}}">
+              <view class='report-child-title'>{{item.title}}</view>
+              <view class='report-child-status'>
+                <icon type="{{item.status?'success':'warn'}}" size="15"></icon>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class='line' style="height:10px;"></view>
+
+        <view style="background-color:#008000">
+          <view class='footer-button'>
+            <button class="submit-btn" bindtap='handleSubmit'>提交数据</button>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+</view>

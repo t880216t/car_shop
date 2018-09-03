@@ -1,0 +1,185 @@
+<!--pages/report/report.wxml-->
+<view class='report-container'>
+  <view class='report-des'>
+    <view class='car-title'>{{detail.title}}</view>
+    <view class='car-des'>
+      <text style='margin:10px;'>  {{detail.description}}</text>
+    </view>
+  </view>
+  <view class='report-detail'>
+    <view class='report-item-box'>
+      <view class='report-item-label'>重大事故排查</view>
+      <view class='report-item-des'>车体骨架结构无变形、无扭曲、无更换、无烧焊、无褶皱；无火烧痕迹，无水泡痕迹。</view>
+      <view style='height:10px;width:100%;'></view>
+
+      <!--事故排查-->
+      <view class='report-item' bindtap='showForm' id='1'>
+        <view class='report-item-title'>排除重大事故</view>
+        <view class='report-item-target-box'>
+          <view class='report-item-target' wx:if="{{detail.reports.content[0].reportTarget === '全部正常'}}">全部正常</view>
+        </view>
+        <view class='report-item-check'>
+          <span class="{{isShowFrom1 ? 'tui-shangjiantou' : 'tui-xiajiantou'}}"></span>
+        </view>
+      </view>
+      <view class="{{isShowFrom1 ? ' ' : 'tui-hide '}}">
+        <view class='report-child-box' wx:for="{{detail.reports.content[0].detailContent}}" wx:key="{{item.index}}">
+          <view class='report-child-title'>{{item.title}}</view>
+          <view class='report-child-status'>
+            <icon type="{{item.status?'success':'warn'}}" size="15"></icon>
+          </view>
+        </view>
+      </view>
+
+      <!--排除火烧车-->
+      <view class='report-item' bindtap='showForm' id='2'>
+        <view class='report-item-title'>排除火烧车</view>
+        <view class='report-item-target-box'>
+          <view class='report-item-target' wx:if="{{detail.reports.content[1].reportTarget === '全部正常'}}">全部正常</view>
+        </view>
+        <view class='report-item-check'>
+          <span class="{{isShowFrom2 ? 'tui-shangjiantou' : 'tui-xiajiantou'}}"></span>
+        </view>
+      </view>
+      <view class="{{isShowFrom2 ? ' ' : 'tui-hide '}}">
+        <view class='report-child-box' wx:for="{{detail.reports.content[1].detailContent}}" wx:key="{{item.index}}">
+          <view class='report-child-title'>{{item.title}}</view>
+          <view class='report-child-status'>
+            <icon type="{{item.status?'success':'warn'}}" size="15"></icon>
+          </view>
+        </view>
+      </view>
+
+      <!--排除水泡车-->
+      <view class='report-item' bindtap='showForm' id='3'>
+        <view class='report-item-title'>排除水泡车</view>
+        <view class='report-item-target-box'>
+          <view class='report-item-target' wx:if="{{detail.reports.content[2].reportTarget === '全部正常'}}">全部正常</view>
+        </view>
+        <view class='report-item-check'>
+          <span class="{{isShowFrom3 ? 'tui-shangjiantou' : 'tui-xiajiantou'}}"></span>
+        </view>
+      </view>
+      <view class="{{isShowFrom3 ? ' ' : 'tui-hide '}}">
+        <view class='report-child-box' wx:for="{{detail.reports.content[2].detailContent}}" wx:key="{{item.index}}">
+          <view class='report-child-title'>{{item.title}}</view>
+          <view class='report-child-status'>
+            <icon type="{{item.status?'success':'warn'}}" size="15"></icon>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view style='height:10px;width:100%;background-color: #f2f2f2'></view>
+
+    <view class='report-item-box'>
+      <view class='report-item-label'>常用功能检测</view>
+      <view class='report-item-des'>检测，电子控制系统、功能开关灯光系统等无异常，可正常使用。</view>
+      <view style='height:10px;width:100%;'></view>
+
+      <!--电子控制系统-->
+      <view class='report-item' bindtap='showForm' id='4'>
+        <view class='report-item-title'>电子控制系统</view>
+        <view class='report-item-target-box'>
+          <view class='report-item-target' wx:if="{{detail.reports.content[3].reportTarget === '全部正常'}}">全部正常</view>
+        </view>
+        <view class='report-item-check'>
+          <span class="{{isShowFrom4 ? 'tui-shangjiantou' : 'tui-xiajiantou'}}"></span>
+        </view>
+      </view>
+      <view class="{{isShowFrom4 ? ' ' : 'tui-hide '}}">
+        <view class='report-child-box' wx:for="{{detail.reports.content[3].detailContent}}" wx:key="{{item.index}}">
+          <view class='report-child-title'>{{item.title}}</view>
+          <view class='report-child-status'>
+            <icon type="{{item.status?'success':'warn'}}" size="15"></icon>
+          </view>
+        </view>
+      </view>
+
+      <!--常用功能开关-->
+      <view class='report-item' bindtap='showForm' id='5'>
+        <view class='report-item-title'>常用功能开关</view>
+        <view class='report-item-target-box'>
+          <view class='report-item-target' wx:if="{{detail.reports.content[4].reportTarget === '全部正常'}}">全部正常</view>
+        </view>
+        <view class='report-item-check'>
+          <span class="{{isShowFrom5 ? 'tui-shangjiantou' : 'tui-xiajiantou'}}"></span>
+        </view>
+      </view>
+      <view class="{{isShowFrom5 ? ' ' : 'tui-hide '}}">
+        <view class='report-child-box' wx:for="{{detail.reports.content[4].detailContent}}" wx:key="{{item.index}}">
+          <view class='report-child-title'>{{item.title}}</view>
+          <view class='report-child-status'>
+            <icon type="{{item.status?'success':'warn'}}" size="15"></icon>
+          </view>
+        </view>
+      </view>
+
+      <!--灯光系统-->
+      <view class='report-item' bindtap='showForm' id='6'>
+        <view class='report-item-title'>灯光系统</view>
+        <view class='report-item-target-box'>
+          <view class='report-item-target' wx:if="{{detail.reports.content[5].reportTarget === '全部正常'}}">全部正常</view>
+        </view>
+        <view class='report-item-check'>
+          <span class="{{isShowFrom6 ? 'tui-shangjiantou' : 'tui-xiajiantou'}}"></span>
+        </view>
+      </view>
+      <view class="{{isShowFrom6 ? ' ' : 'tui-hide '}}">
+        <view class='report-child-box' wx:for="{{detail.reports.content[5].detailContent}}" wx:key="{{item.index}}">
+          <view class='report-child-title'>{{item.title}}</view>
+          <view class='report-child-status'>
+            <icon type="{{item.status?'success':'warn'}}" size="15"></icon>
+          </view>
+        </view>
+      </view>
+
+      <!--玻璃、后视镜-->
+      <view class='report-item' bindtap='showForm' id='7'>
+        <view class='report-item-title'>玻璃、后视镜</view>
+        <view class='report-item-target-box'>
+          <view class='report-item-target' wx:if="{{detail.reports.content[6].reportTarget === '全部正常'}}">全部正常</view>
+        </view>
+        <view class='report-item-check'>
+          <span class="{{isShowFrom7 ? 'tui-shangjiantou' : 'tui-xiajiantou'}}"></span>
+        </view>
+      </view>
+      <view class="{{isShowFrom7 ? ' ' : 'tui-hide '}}">
+        <view class='report-child-box' wx:for="{{detail.reports.content[6].detailContent}}" wx:key="{{item.index}}">
+          <view class='report-child-title'>{{item.title}}</view>
+          <view class='report-child-status'>
+            <icon type="{{item.status?'success':'warn'}}" size="15"></icon>
+          </view>
+        </view>
+      </view>
+
+      <!--随车附件-->
+      <view class='report-item' bindtap='showForm' id='8'>
+        <view class='report-item-title'>随车附件</view>
+        <view class='report-item-target-box'>
+          <view class='report-item-target' wx:if="{{detail.reports.content[7].reportTarget === '全部正常'}}">全部正常</view>
+        </view>
+        <view class='report-item-check'>
+          <span class="{{isShowFrom8 ? 'tui-shangjiantou' : 'tui-xiajiantou'}}"></span>
+        </view>
+      </view>
+      <view class="{{isShowFrom8 ? ' ' : 'tui-hide '}}">
+        <view class='report-child-box' wx:for="{{detail.reports.content[7].detailContent}}" wx:key="{{item.index}}">
+          <view class='report-child-title'>{{item.title}}</view>
+          <view class='report-child-status'>
+            <icon type="{{item.status?'success':'warn'}}" size="15"></icon>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view style='height:60px;width:100%;background-color: #f2f2f2'></view>
+    <view class="footer-box">
+      <view class='footer-button'>
+        <button open-type="share" class='share-btn'>分享给好友</button>
+      </view>
+      <view class='footer-button'>
+        <button open-type='contact' class="contact-btn">联系客服</button>
+      </view>
+    </view>
+  </view>
+</view>
