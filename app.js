@@ -40,6 +40,6 @@ App({
   },
   globalData: {
     userInfo: null,
-    host:'https://orion-c.top/app'
+    host:'https://host.com/app'
   }
 })

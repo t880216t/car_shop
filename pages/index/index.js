@@ -224,7 +224,7 @@ Page({
   },
   salContact(e) {
     wx.makePhoneCall({
-      phoneNumber: '13814509042'
+      phoneNumber: '13888888888'
     })
   },
   //获取经纬度
